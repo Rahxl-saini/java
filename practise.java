@@ -114,8 +114,13 @@ public class practise{
 
             maxproduct = Math.max(current, Math.max(current * tempmax, current * tempmin));
             minproduct = Math.min(current, Math.min(current * tempmax, current * tempmin));
-            answer = Math.max(current, maxproduct);
+            answer = Math.max(answer, maxproduct);
         }
         return answer;
+    }
+    public static void main(String[] args){
+        int nums[] = {2, 3, -2, 4};
+        int result = MaximumProductSubarray(nums);
+        System.out.println(result);
     }
 }
