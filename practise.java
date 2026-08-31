@@ -76,21 +76,46 @@
 
 // Maximum Subarray
 
+// import java.util.Scanner;
+// public class practise{
+//     public static int MaximumSubarray(int[] nums){
+//         int currentSum = nums[0];
+//         int maxSum = nums[0];
+
+//         for(int i=1; i<nums.length; i++){
+//             currentSum = Math.max(nums[i], currentSum + nums[i]);
+//             maxSum = Math.max(maxSum, currentSum);
+//         }
+//         return maxSum;
+//     }
+//     public static void main(String[] args){
+//         int nums[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+//         int result = MaximumSubarray(nums);
+//         System.out.println(result);
+//     }
+// }
+
+
+// Maximum Product Subarray
+
 import java.util.Scanner;
 public class practise{
-    public static int MaximumSubarray(int[] nums){
-        int currentSum = nums[0];
-        int maxSum = nums[0];
+    public static int MaximumProductSubarray(int [] nums){
+        int maxproduct = nums[0];
+        int minproduct = nums[0];
+        int answer = nums[0];
 
         for(int i=1; i<nums.length; i++){
-            currentSum = Math.max(nums[i], currentSum + nums[i]);
-            maxSum = Math.max(maxSum, currentSum);
+
+            int current = nums[i];
+
+            int tempmax = maxproduct;
+            int tempmin = minproduct;
+
+            maxproduct = Math.max(current, Math.max(current * tempmax, current * tempmin));
+            minproduct = Math.min(current, Math.min(current * tempmax, current * tempmin));
+            answer = Math.max(current, maxproduct);
         }
-        return maxSum;
-    }
-    public static void main(String[] args){
-        int nums[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        int result = MaximumSubarray(nums);
-        System.out.println(result);
+        return answer;
     }
 }
